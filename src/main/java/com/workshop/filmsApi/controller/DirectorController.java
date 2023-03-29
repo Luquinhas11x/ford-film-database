@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -62,6 +63,14 @@ public class DirectorController {
                 .httpCode(200)
                 .message("OK")
                 .response(directorService.getAll())
+                .build();
+    }
+    @GetMapping("/test")
+    public BaseResponse<List<DirectorFilmDto>> getDirectorTest(@RequestParam(value = "directorName") String directorName){
+        return BaseResponse.<List<DirectorFilmDto>>builder()
+                .httpCode(200)
+                .message("OK")
+                .response(directorService.getAllTest(directorName))
                 .build();
     }
 

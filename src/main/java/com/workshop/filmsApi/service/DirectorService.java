@@ -24,6 +24,12 @@ public class DirectorService {
                 .collect(Collectors.toList());
     }
 
+    public List<DirectorFilmDto> getAllTest(String directorName){
+        return directorRepository.findByDirectorName(directorName).stream()
+                .map(DirectorMapper::toDirectorFilmDto)
+                .collect(Collectors.toList());
+    }
+
 //    public DirectorEntity getById(Long id) throws Exception{
 //        Optional<DirectorEntity> director = directorRepository.findById(id);
 //
